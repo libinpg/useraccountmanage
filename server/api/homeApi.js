@@ -39,26 +39,25 @@ router.get('/getlist', (req, res) => {
   })
 })
 
-// 新增列表
-// router.post('/addlist', (req, res) => {
-//   var sql = $sql.home.add
-//   var parms = req.body
-//   console.log(parms)
-//   conn.query(sql, [parms.title, parms.num], function (err, result) {
-//     if (err) {
-//       console.log(err)
-//     }
-//     if (result) {
-//       jsonWrite(res, result)
-//     }
-//   })
-// })
-
-router.post('/updateuserpassword', (req, res) => {
-  var sql = $sql.home.update
+router.post('/updatepassword', (req, res) => {
+  var sql = $sql.home.updatepassword
   var parms = req.body
   console.log(parms)
   conn.query(sql, [parms.userpassword,parms.username], function (err, result) {
+    if (err) {
+      console.log(err)
+    }
+    if (result) {
+      jsonWrite(res, result)
+    }
+  })
+})
+
+router.post('/updatebasicinfo', (req, res) => {
+  var sql = $sql.home.updatebasicinfo
+  var parms = req.body
+  console.log(parms)
+  conn.query(sql, [parms.firstname,parms.lastname,parms.email,parms.username], function (err, result) {
     if (err) {
       console.log(err)
     }

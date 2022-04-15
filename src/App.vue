@@ -1,6 +1,5 @@
 <template>
   <v-app>
-    <Toolbar />
     <NavBar />
     <v-main class = "mx-4">
       <router-view/>

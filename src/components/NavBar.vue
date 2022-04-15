@@ -86,7 +86,7 @@
             return {
                 drawer: false,
                 links: [
-                {icon : 'mdi-view-dashboard-edit-outline',text : '账号信息', route: '/accountinfo'},
+                {icon : 'mdi-view-dashboard-edit-outline',text : '资料管理', route: '/accountinfo'},
                 {icon : 'mdi-database-search',text : '订单管理', route: '/order'},
                 {icon : 'mdi-database-search',text : '进度跟踪', route: '/progresstrack'},
                 {icon : 'mdi-message-alert',text : '用户反馈', route: '/projects'},

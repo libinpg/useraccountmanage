@@ -4,7 +4,8 @@ import projects from '../views/Projects.vue'
 import accountinfo from '../views/Accountinfo.vue'
 import processtrack from '../views/Progresstrack.vue'
 import order from '../views/Order.vue'
-
+import updatepassword from '../components/accountviews/UpdatePassword.vue'
+import updatebasicinfo from '../components/accountviews/UpdateBasicInfo.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -20,7 +21,24 @@ const routes = [
   },
   {
     path: '/accountinfo',
-    component: accountinfo
+    component: accountinfo,
+    children: [
+      {
+        path: '/',
+        name: 'updatebasicinfo',
+        component: updatebasicinfo
+      },
+      {
+        path: '/updatepassword',
+        name: 'updatepassword',
+        component: updatepassword
+      },
+      {
+        path: '/updatebasicinfo',
+        name: 'updatebasicinfo',
+        component: updatebasicinfo
+      }
+    ]
   },
   {
     path: '/progresstrack',
