@@ -1,63 +1,35 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router'
-import projects from '../views/Projects.vue'
-import accountinfo from '../views/Accountinfo.vue'
-import processtrack from '../views/Progresstrack.vue'
-import order from '../views/Order.vue'
-import updatepassword from '../components/accountviews/UpdatePassword.vue'
-import updatebasicinfo from '../components/accountviews/UpdateBasicInfo.vue'
-Vue.use(VueRouter)
+import Router from 'vue-router'
 
-const routes = [
-  {
-    path: '/',
-    name: 'projects',
-    component: projects
-  },
-  {
-    path: '/order',
-    name: 'order',
-    component: order
-  },
-  {
-    path: '/accountinfo',
-    component: accountinfo,
-    children: [
-      {
-        path: '/',
-        name: 'updatebasicinfo',
-        component: updatebasicinfo
-      },
-      {
-        path: '/updatepassword',
-        name: 'updatepassword',
-        component: updatepassword
-      },
-      {
-        path: '/updatebasicinfo',
-        name: 'updatebasicinfo',
-        component: updatebasicinfo
-      }
-    ]
-  },
-  {
-    path: '/progresstrack',
-    component: processtrack
-  },
-  {
-    path: '/team',
-    name: 'team',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/Team.vue')
-  },
-]
+Vue.use(Router)
 
-const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
+const Home = () => import("../views/home/home")
+const Category = () => import("../views/category/category")
+const Cart = () => import("../views/cart/cart")
+const Profile = () => import("../views/profile/profile")
+
+export default new Router({
+  routes: [
+    {
+      path: "",
+      redirect: "/home"
+    },
+    {
+      path: "/home",
+      component: Home
+    },
+    {
+      path: "/category",
+      component: Category
+    },
+    {
+      path: "/cart",
+      component: Cart
+    },
+    {
+      path: "/profile",
+      component: Profile
+    }
+  ],
+  mode: "history"
 })
-
-export default router

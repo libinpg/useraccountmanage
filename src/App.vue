@@ -1,19 +1,20 @@
 <template>
-  <v-app>
-    <NavBar />
-    <v-main class = "mx-4">
-      <router-view/>
-    </v-main>
-  </v-app>
+  <div id="app">
+    <router-view></router-view>
+    <MainTabBar/>
+  </div>
 </template>
-<script>
-import NavBar from "@/components/NavBar.vue"
 
+<script>
+import MainTabBar from "@/components/MainTabBar/MainTabBar";
 export default {
   name: 'App',
-  components: {NavBar},
-  data: () => ({
-    //
-  }),
-};
+  components: {
+    MainTabBar
+  }
+}
 </script>
+
+<style>
+  @import "./assets/css/base.css";
+</style>
