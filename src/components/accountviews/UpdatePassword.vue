@@ -93,14 +93,14 @@
           min: v => v.length >= 8 || '最少有8个字符',
           emailMatch: () => ('The email and password you entered don\'t match'),
         },
-        username: 'username',
+        username: 'root',
         userpassword1: '',
         userpassword2: ''
       }
     },
     methods: {
       test() {
-        this.$http.post('/api/home/updatepassword',"userpassword="+this.userpassword+"&"+"username="+this.username).then((response) => {
+        this.$http.post('/api/home/updatepassword',"userpassword="+this.userpassword1+"&"+"username="+this.username).then((response) => {
                 console.log(response);
         });
         this.$http.get('/api/home/getlist',{}).then((response) => {
@@ -109,4 +109,5 @@
       }
     }
  }
+ 
 </script>

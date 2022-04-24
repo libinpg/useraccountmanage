@@ -1,6 +1,6 @@
 <template>
 <div>
-        <v-row>
+        <!-- <v-row>
             <v-col align="center">
                 <v-chip
                 color="indigo"
@@ -21,9 +21,9 @@
                 username
                 </v-chip>
             </v-col>
-        </v-row>
+        </v-row> -->
         
-        <v-row>
+        <!-- <v-row>
              <v-col cols="3" align="right">
                 <v-spacer></v-spacer>
                 <v-chip
@@ -39,9 +39,9 @@
                 <v-text-field v-model="lastname">
                 </v-text-field>
             </v-col>
-        </v-row>
+        </v-row> -->
 
-        <v-row>
+        <v-row class="mt-16">
              <v-col cols="3" align="right">
                 <v-spacer></v-spacer>
                 <v-chip
@@ -49,34 +49,19 @@
                 text-color="white"
                 label
                 >
-                  First Name(名)
+                  输入新的用户名
                 </v-chip>
              </v-col>
 
              <v-col cols="7">
-                <v-text-field v-model="firstname">
-                </v-text-field>
-            </v-col>
-        </v-row>
-        <v-row>
-             <v-col cols=3 align="right">
-                <v-chip
-                color="indigo"
-                text-color="white"
-                label
-                >
-                  Email(邮箱地址)
-                </v-chip>
-             </v-col>
-             <v-col cols=7>
-                <v-text-field v-model="email">
+                <v-text-field v-model="newusername">
                 </v-text-field>
             </v-col>
         </v-row>
         <v-row justify="center">
         <v-col cols="9">
            <v-btn block color="primary" @click="test()">
-               下一步
+               确认更改
            </v-btn>
         </v-col>
     </v-row>
@@ -91,15 +76,14 @@
 export default {
      data() {
          return {
-           username: 'username',
-           lastname: '',
-           firstname: '',
-           email: ''
+           //username从cookie中读取
+           username: 'aaa',
+           newusername: ''
          }
      },
      methods: {
       test() {
-        this.$http.post('/api/home/updatebasicinfo',"firstname="+this.firstname+"&"+"lastname="+this.lastname+"&"+"email="+this.email+"&"+"username="+this.username).then((response) => {
+        this.$http.post('/api/home/updatename',"newusername="+this.newusername+"&"+"username="+this.username).then((response) => {
                 console.log(response);
         });
       }

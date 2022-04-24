@@ -39,8 +39,81 @@ router.get('/getlist', (req, res) => {
   })
 })
 
+
+//请求任务列表
+router.get('/gettasks', (req, res) => {
+  var sql = $sql.home.gettasks
+  var parms = req.query
+  console.log(parms)
+  conn.query(sql, function (err, result) {
+    if (err) {
+      console.log(err)
+    }
+    if (result) {
+      console.log(result)
+      res.send(result)
+    }
+  })
+})
+
+router.post('/getpolygoncollection', (req, res) => {
+  var sql = $sql.home.getpolygoncollection
+  var parms = req.body
+  console.log(parms)
+  conn.query(sql, [parms.username], function (err, result) {
+    if (err) {
+      console.log(err)
+    }
+    if (result) {
+      jsonWrite(res, result)
+    }
+  })
+})
+
+router.post('/insertpolygoncollection', (req, res) => {
+  var sql = $sql.home.insertpolygoncollection
+  var parms = req.body
+  console.log(parms)
+  conn.query(sql, [parms.username,parms.polygonarray], function (err, result) {
+    if (err) {
+      console.log(err)
+    }
+    if (result) {
+      jsonWrite(res, result)
+    }
+  })
+})
+//更新用户名
+router.post('/updatename', (req, res) => {
+  var sql = $sql.home.updateusername
+  var parms = req.body
+  console.log(parms)
+  conn.query(sql, [parms.newusername,parms.username], function (err, result) {
+    if (err) {
+      console.log(err)
+    }
+    if (result) {
+      jsonWrite(res, result)
+    }
+  })
+})
+//更新用户邮箱
+router.post('/updateemail', (req, res) => {
+  var sql = $sql.home.updateuseremail
+  var parms = req.body
+  console.log(parms)
+  conn.query(sql, [parms.useremail,parms.username], function (err, result) {
+    if (err) {
+      console.log(err)
+    }
+    if (result) {
+      jsonWrite(res, result)
+    }
+  })
+})
+//更新用户密码
 router.post('/updatepassword', (req, res) => {
-  var sql = $sql.home.updatepassword
+  var sql = $sql.home.updateuserpassword
   var parms = req.body
   console.log(parms)
   conn.query(sql, [parms.userpassword,parms.username], function (err, result) {
@@ -52,7 +125,20 @@ router.post('/updatepassword', (req, res) => {
     }
   })
 })
-
+//更新用户微信ID
+router.post('/updatewechatid', (req, res) => {
+  var sql = $sql.home.updateuserwechatid
+  var parms = req.body
+  console.log(parms)
+  conn.query(sql, [parms.userwechatid,parms.username], function (err, result) {
+    if (err) {
+      console.log(err)
+    }
+    if (result) {
+      jsonWrite(res, result)
+    }
+  })
+})
 router.post('/getidprogress', (req, res) => {
   var sql = $sql.home.searchidprogress
   var parms = req.body

@@ -3,8 +3,14 @@ var sqlMap = {
     // home
     home: {
       search: 'select * from profile',
+      gettasks: 'select * from task',
+      insertpolygoncollection: 'INSERT INTO `polygoncollection` (`id`, `username`, `polygonarray`) VALUES (NULL,?, ?);',
+      getpolygoncollection: 'select * from polygoncollection where `username` = ?',
       add: 'insert into profile(id,username,userpassword) values (?)',
-      updatepassword: 'UPDATE `profile` SET `userpassword`= ? WHERE `username`= ? ',
+      updateusername: 'UPDATE `user` SET `username`= ? WHERE `username`= ? ',
+      updateuserpassword: 'UPDATE `user` SET `userpassword`= ? WHERE `username`= ? ',
+      updateuseremail: 'UPDATE `user` SET `useremail`= ? WHERE `username`= ? ',
+      updateuserwechatid: 'UPDATE `user` SET `userwechatid`= ? WHERE `username`= ? ',
       updatebasicinfo: 'UPDATE `userdata` SET `firstname`= ? ,`lastname`= ? ,`email`= ?  WHERE `username`= ?',
       searchidprogress: 'select * from progress where `id`= ?',
       searchprogress: 'select * from progress',

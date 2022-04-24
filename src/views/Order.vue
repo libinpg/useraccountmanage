@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-row>
+    <!-- <v-row>
       <v-col cols="12" sm="4">
         <h1>订单区域查看</h1>
         <v-overflow-btn
@@ -13,7 +13,8 @@
           prefix="订单id:"
         ></v-overflow-btn>
       </v-col>
-    </v-row>
+    </v-row> 
+    
     <vl-map :load-tiles-while-animating="true" :load-tiles-while-interacting="true" data-projection="EPSG:4326" style="height: 400px">
       <vl-view :zoom.sync="zoom" :center.sync="center" :rotation.sync="rotation"></vl-view>
       <vl-layer-tile>
@@ -22,19 +23,42 @@
       <vl-layer-vector>
         <vl-source-vector :features.sync="features"></vl-source-vector>
       </vl-layer-vector>
+      <vl-interaction-draw></vl-interaction-draw>
     </vl-map>
     <p v-if="loading">
       正在加载特征，请稍候...
     </p>
     <p v-if="features.length > 0">
       加载特征完毕
-    </p>
+    </p> -->
   </div>
 </template>
 
+<style>
+@import "~buefy/dist/buefy.css";
+@import "~vuelayers/dist/vuelayers.css";
+html, body, #app {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+</style>
 <script>
+  import AppMap from '../components/Map.vue'
+
   export default {
-    data () {
+  components: {
+    AppMap,
+  },
+  data () {
       return { 
         zoom: 7,
         center: [103.9587751,30.3107293],

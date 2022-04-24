@@ -15,14 +15,9 @@
       :input-value="showNav"
       color="indigo"
     >
-      <v-btn router to="/updatebasicinfo">
-        <span>基本信息</span>
-        <v-icon>mdi-card-account-details</v-icon>
-      </v-btn>
-
-      <v-btn router to="/updatepassword">
-        <span>安全设置</span>
-        <v-icon>mdi-security</v-icon>
+      <v-btn v-for="link in links" :key=link.text router :to="link.route">
+        <span>{{link.text}}</span>
+        <v-icon>{{link.icon}}</v-icon>
       </v-btn>
     </v-bottom-navigation>
   </div>
@@ -34,6 +29,12 @@
       return {
         activeBtn: 1,
         showNav: true,
+        links: [
+                {icon : 'mdi-badge-account-horizontal',text : '更改用户名', route: '/updateusername'},
+                {icon : 'mdi-email',text : '更改邮箱', route: '/updateemail'},
+                {icon : 'mdi-lock',text : '更改密码', route: '/updatepassword'},
+                {icon : 'mdi-wechat',text : '绑定微信', route: '/updatewechat'}
+               ]
       }
     },
   }

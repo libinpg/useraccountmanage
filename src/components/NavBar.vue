@@ -86,12 +86,11 @@
             return {
                 drawer: false,
                 links: [
-                {icon : 'mdi-view-dashboard-edit-outline',text : '资料管理', route: '/accountinfo'},
-                {icon : 'mdi-database-search',text : '订单管理', route: '/order'},
+                {icon : 'mdi-view-dashboard-edit-outline',text : '账号管理', route: '/accountinfo'},
+                {icon : 'mdi-database-search',text : '任务管理', route: '/projects'},
+                {icon : 'mdi-archive-plus-outline',text : '数据入库', route: '/adddata'},
                 {icon : 'mdi-database-search',text : '进度跟踪', route: '/progresstrack'},
-                {icon : 'mdi-message-alert',text : '用户反馈', route: '/projects'},
-                {icon : 'mdi-database-search',text : '数据检索', route: '/'},
-                {icon : 'mdi-archive-plus-outline',text : '数据入库', route: '/'},
+                {icon : 'mdi-message-alert',text : '用户反馈', route: '/'},
                 {icon : 'mdi-export',text : '数据导出', route: '/'},
                 {icon : 'mdi-ab-testing',text : '系统性能测试', route: '/'},
                 ]

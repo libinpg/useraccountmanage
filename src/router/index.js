@@ -5,14 +5,22 @@ import accountinfo from '../views/Accountinfo.vue'
 import processtrack from '../views/Progresstrack.vue'
 import order from '../views/Order.vue'
 import updatepassword from '../components/accountviews/UpdatePassword.vue'
-import updatebasicinfo from '../components/accountviews/UpdateBasicInfo.vue'
+import updateemail from '../components/accountviews/UpdateEmail.vue'
+import updateusername from '../components/accountviews/UpdateUsername.vue'
+import updatewechat from '../components/accountviews/UpdateWechat.vue'
+import adddata from '../views/AddData.vue'
 Vue.use(VueRouter)
 
 const routes = [
   {
-    path: '/',
+    path: '/projects',
     name: 'projects',
     component: projects
+  },
+  {
+    path: '/adddata',
+    name: 'adddata',
+    component: adddata
   },
   {
     path: '/order',
@@ -24,9 +32,19 @@ const routes = [
     component: accountinfo,
     children: [
       {
+        path: '/updateusername',
+        name: 'updateusername',
+        component: updateusername
+      },
+      {
+        path: '/updatewechat',
+        name: 'updatewechat',
+        component: updatewechat
+      },
+      {
         path: '/',
-        name: 'updatebasicinfo',
-        component: updatebasicinfo
+        name: 'updateemail',
+        component: updateemail
       },
       {
         path: '/updatepassword',
@@ -34,9 +52,9 @@ const routes = [
         component: updatepassword
       },
       {
-        path: '/updatebasicinfo',
-        name: 'updatebasicinfo',
-        component: updatebasicinfo
+        path: '/updateemail',
+        name: 'updateemail',
+        component: updateemail
       }
     ]
   },
