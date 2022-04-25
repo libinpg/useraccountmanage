@@ -346,8 +346,8 @@ export default {
     return {
       //username从coookie中获取
       username: 'root',
-      center: [0, 0],
-      zoom: 2,
+      center: [109.035745, 38.195107],
+      zoom: 4.289983949614681,
       rotation: 0,
       clickCoordinate: undefined,
       selectedFeatures: [],
@@ -363,21 +363,21 @@ export default {
           label: '绘制点',
           icon: 'map-marker',
         },
-        {
-          type: 'line-string',
-          label: '绘制线形文本',
-          icon: 'minus',
-        },
+        // {
+        //   type: 'line-string',
+        //   label: '绘制线形文本',
+        //   icon: 'minus',
+        // },
         {
           type: 'polygon',
           label: '绘制多边形',
           icon: 'square-o',
         },
-        {
-          type: 'circle',
-          label: '绘制圆',
-          icon: 'circle-thin',
-        },
+        // {
+        //   type: 'circle',
+        //   label: '绘制圆',
+        //   icon: 'circle-thin',
+        // },
         {
           type: undefined,
           label: '停止绘制',

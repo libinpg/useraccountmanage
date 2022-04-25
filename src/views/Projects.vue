@@ -37,7 +37,7 @@
           <div class="caption grey--text">任务序号</div>
           <div>{{project.id}}</div>
         </v-flex>
-        <v-flex xs12 md5>
+        <v-flex xs12 md2>
           <div class="caption grey--text">提取类型</div>
           <div>{{project.extractiontype}}</div>
         </v-flex>
@@ -50,8 +50,9 @@
           <div>{{project.finishtime}}</div>
         </v-flex>
         <v-flex xs2 sm4 md2>
-          <div :class="`$(project.status) white--text my-2 caption`">任务状态</div>
+          <div class="caption grey--text">订单状态</div>
           <div>{{project.status}}</div>
+          <div :class="`$(project.status) white--text my-2 caption`">任务状态</div>
         </v-flex>
       </v-layout>
     </v-card>
