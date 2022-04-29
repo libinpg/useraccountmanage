@@ -60,7 +60,13 @@
         </v-row>
         <v-row justify="center">
         <v-col cols="9">
-           <v-btn block color="primary" @click="test()">
+           <!-- v-btn可以使用loading属性 -->
+           <v-btn 
+           block 
+           color="primary" 
+           :loading="loading"
+           :disabled="loading"
+           @click="test()">
                确认更改
            </v-btn>
         </v-col>
@@ -78,11 +84,28 @@ export default {
          return {
            //username从cookie中读取
            username: 'aaa',
-           newusername: ''
-         }
+           newusername: '',
+           loader: null,
+           loading: false,
+           loading2: false,
+           loading3: false,
+           loading4: false,
+           loading5: false,
+          }
      },
+     watch: {
+      loader () {
+        const l = this.loader
+        this[l] = !this[l]
+
+        setTimeout(() => (this[l] = false), 3000)
+
+        this.loader = null
+      },
+    },
      methods: {
       test() {
+        this.loader = 'loading'
         this.$http.post('/api/home/updatename',"newusername="+this.newusername+"&"+"username="+this.username).then((response) => {
                 console.log(response);
         });

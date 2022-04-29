@@ -97,7 +97,7 @@
                 {icon : 'mdi-calendar-check',text : '任务管理', route: '/projects'},
                 {icon : 'mdi-database-plus-outline',text : '数据入库', route: '/adddata'},
                 {icon : 'mdi-database-search',text : '进度跟踪', route: '/progresstrack'},
-                {icon : 'mdi-message-alert',text : '用户反馈', route: '/'},
+                {icon : 'mdi-message-alert',text : '用户反馈', route: '/feedback'},
                 {icon : 'mdi-export',text : '数据导出', route: '/'},
                 {icon : 'mdi-ab-testing',text : '系统性能测试', route: '/'},
                 ]

@@ -31,31 +31,53 @@
         <span>按完成时间排序</span>
       </v-tooltip>
       </v-layout>
-    <v-card flat v-for="project in projects" :key="project.title" class="mt-5"> 
-      <v-layout row wrap :class="`pa-3 project ${project.status}`">
+       <v-layout>
         <v-flex xs12 md1>
           <div class="caption grey--text">任务序号</div>
-          <div>{{project.id}}</div>
         </v-flex>
         <v-flex xs12 md2>
           <div class="caption grey--text">提取类型</div>
-          <div>{{project.extractiontype}}</div>
         </v-flex>
         <v-flex xs6 sm4 md2>
           <div class="caption grey--text">创建日期</div>
-          <div>{{project.createtime}}</div>
         </v-flex>
         <v-flex xs6 sm4 md2>
           <div class="caption grey--text">完成日期</div>
-          <div>{{project.finishtime}}</div>
         </v-flex>
         <v-flex xs2 sm4 md2>
           <div class="caption grey--text">订单状态</div>
+        </v-flex>
+       </v-layout>
+       <v-divider>
+      </v-divider>
+      <v-card flat class="mt-5" v-for="project in projects" :key="project.title"> 
+      <v-layout  row wrap :class="`pa-3 project ${project.status}`">
+        <v-flex xs12 md1>
+          <div>{{project.id}}</div>
+        </v-flex>
+        <v-flex xs12 md2>
+          <div>{{project.extractiontype}}</div>
+        </v-flex>
+        <v-flex xs6 sm4 md2>
+          <div>{{project.createtime}}</div>
+        </v-flex>
+        <v-flex xs6 sm4 md2>
+          <div>{{project.finishtime}}</div>
+        </v-flex>
+        <v-flex xs2 sm4 md2>
           <div>{{project.status}}</div>
           <div :class="`$(project.status) white--text my-2 caption`">任务状态</div>
         </v-flex>
       </v-layout>
-    </v-card>
+      <v-divider>
+      </v-divider>
+      </v-card>
+       <div class="text-center">
+        <v-pagination
+          v-model="page"
+          :length="6"
+        ></v-pagination>
+      </div>
   </div>
 </template>
 
@@ -87,6 +109,7 @@
       //   { title: '建筑', createtime: '20th Dec 2018', finishtime: '20th Dec 2018', status: '模型测试', content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!'},
       //   { title: '植被', createtime: '20th Oct 2018', finishtime: '20th Oct 2018', status: '生成数据', content: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt consequuntur eos eligendi illum minima adipisci deleniti, dicta mollitia enim explicabo fugiat quidem ducimus praesentium voluptates porro molestias non sequi animi!'},
       // ]
+      page: 1,
       projects: []
       }
     },

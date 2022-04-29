@@ -9,6 +9,7 @@ import updateemail from '../components/accountviews/UpdateEmail.vue'
 import updateusername from '../components/accountviews/UpdateUsername.vue'
 import updatewechat from '../components/accountviews/UpdateWechat.vue'
 import adddata from '../views/AddData.vue'
+import feedback from '../views/Feedback.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -61,6 +62,10 @@ const routes = [
   {
     path: '/progresstrack',
     component: processtrack
+  },
+  {
+    path: '/feedback',
+    component: feedback,
   },
   {
     path: '/team',
