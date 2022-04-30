@@ -55,6 +55,21 @@ router.get('/gettasks', (req, res) => {
     }
   })
 })
+//insertpolygoncollection
+
+router.post('/insertpolygoncollection', (req, res) => {
+  var sql = $sql.home.insertpolygoncollection
+  var parms = req.body
+  console.log(parms)
+  conn.query(sql, [parms.username, parms.polygonarray], function (err, result) {
+    if (err) {
+      console.log(err)
+    }
+    if (result) {
+      jsonWrite(res, result)
+    }
+  })
+})
 
 router.post('/getpolygoncollection', (req, res) => {
   var sql = $sql.home.getpolygoncollection

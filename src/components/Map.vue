@@ -1,5 +1,20 @@
 <template>
   <div class="map">
+    <div class = "idsearch">
+      <v-row>
+      <v-col cols="12" sm="4">
+        <v-overflow-btn
+          :items="dropdown_edit"
+          label="输入您的订单序号"
+          editable
+          item-value="text"
+          v-model="currentIndex"
+          @change="change()"
+          prefix="订单id:"
+        ></v-overflow-btn>
+      </v-col>
+    </v-row>  
+    </div>
     <VlMap
       v-show="mapVisible"
       ref="map"
@@ -11,7 +26,8 @@
         ref="view"
         :center.sync="center"
         :zoom.sync="zoom"
-        :rotation.sync="rotation"/>
+        :rotation.sync="rotation"
+        />
 
       <!-- geolocation -->
       <VlGeoloc @update:position="onUpdatePosition">
@@ -344,6 +360,8 @@ export default {
   name: 'Map',
   data () {
     return {
+      dropdown_edit : [],
+      currentIndex: '0',
       //username从coookie中获取
       username: 'root',
       center: [109.035745, 38.195107],
@@ -385,6 +403,7 @@ export default {
         },
       ],
       drawType: 'point',
+      drawnFeaturesStore : [],
       drawnFeatures: [],
       // base layers
       baseLayers: [
@@ -629,17 +648,40 @@ export default {
   },
   created() {
       this.$http.post('/api/home/getpolygoncollection','username='+this.username).then((response) => {
-                console.log(response.data[0]['polygonarray']);
-                for(var i = 0; i < response.data.length; i++) {
-                    this.drawnFeatures.push(JSON.parse(response.data[i]['polygonarray']));
+                console.log("created:",response.data[0]);
+                for(let i = 0; i < response.data.length; i++) {
+                  this.dropdown_edit.push({text:i+1+''})
+                }
+                for(let i = 0; i < response.data.length; i++) {
+                    console.log(JSON.parse(response.data[i]['polygonarray']));
+                    this.drawnFeaturesStore.push(JSON.parse(response.data[i]['polygonarray']));
                 }
                
                 console.log(this.drawnFeatures)
       });
   },
+  watch:{
+      drawnFeatures:{
+        handler(val,oldval){
+          let newFeature = [...this.drawnFeatures].pop()
+          console.log("watch:",newFeature);
+          let len = this.drawnFeatures.length;
+          if (len > 1) {
+            this.$http.post('/api/home/insertpolygoncollection','username=' + this.username + '&polygonarray=' + JSON.stringify(newFeature)).then((response) => {
+             console.log(response);   
+          });
+          }
+        },
+        deep: true,
+      }
+  },
   methods: {
     camelCase,
     pointOnSurface: findPointOnSurface,
+    change() {
+      this.drawnFeatures = [];
+      this.drawnFeatures.push(this.drawnFeaturesStore[this.currentIndex-'0'-1]);
+    },
     geometryTypeToCmpName(type) {
       return 'vl-geom-' + kebabCase(type)
     },

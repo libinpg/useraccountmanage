@@ -1,21 +1,6 @@
 <template>
   <div id = "app">
-    <v-row>
-      <v-col cols="12" sm="4">
-        <h1>进度跟踪</h1>
-        <v-overflow-btn
-          class="my-2"
-          :items="dropdown_edit"
-          label="输入您的订单序号"
-          editable
-          item-value="text"
-          v-model="currentIndex"
-          @change="change()"
-          prefix="订单id:"
-        ></v-overflow-btn>
-      </v-col>
-    </v-row>
-            <AppMap />
+    <AppMap/>
   </div>
   <!-- <div>
     <v-row>
@@ -17427,7 +17412,7 @@ html, body, #app {
       // });
       this.$http.post('/api/home/getidfeature','id='+this.currentIndex).then((response) => {
                 console.log(response.data[0]);
-                this.currentFeature = response.data[0].feature
+                this.currentFeature = response.data[0]
                 this.loading = true
                 this.loadFeatures().then(features => {
                   this.features = features.map(Object.freeze)

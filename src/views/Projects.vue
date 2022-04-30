@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-layout class="mb-3">
-      <v-tooltip top>
+      <!-- <v-tooltip top>
          <template v-slot:activator="{ on, attrs }">
          <v-btn small flat @click="sortBy('createtime')" 
           color="grey lighten-1"
@@ -29,7 +29,7 @@
          </v-btn>
          </template>
         <span>按完成时间排序</span>
-      </v-tooltip>
+      </v-tooltip> -->
       </v-layout>
        <v-layout>
         <v-flex xs12 md1>

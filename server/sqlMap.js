@@ -6,6 +6,7 @@ var sqlMap = {
       gettasks: 'select * from task',
       insertpolygoncollection: 'INSERT INTO `polygoncollection` (`id`, `username`, `polygonarray`) VALUES (NULL,?, ?);',
       getpolygoncollection: 'select * from polygoncollection where `username` = ?',
+      insertpolygoncollection: 'INSERT INTO `polygoncollection`(`username`, `polygonarray`) VALUES ( ? , ?)',
       add: 'insert into profile(id,username,userpassword) values (?)',
       updateusername: 'UPDATE `user` SET `username`= ? WHERE `username`= ? ',
       updateuserpassword: 'UPDATE `user` SET `userpassword`= ? WHERE `username`= ? ',

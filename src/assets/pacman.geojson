@@ -1,4 +1,6 @@
-[
+{
+  "type": "FeatureCollection",
+  "features": [
     {
       "type": "Feature",
       "id": "pacman",
@@ -141,4 +143,5 @@
         "type": "Point"
       }
     }
-   ]
+  ]
+}
