@@ -5,12 +5,12 @@
       <v-col cols="12" sm="4">
         <v-overflow-btn
           :items="dropdown_edit"
-          label="输入您的订单序号"
+          label="输入您的任务序号"
           editable
           item-value="text"
           v-model="currentIndex"
           @change="change()"
-          prefix="订单id:"
+          prefix="任务id:"
         ></v-overflow-btn>
       </v-col>
     </v-row>  
@@ -681,6 +681,10 @@ export default {
     change() {
       this.drawnFeatures = [];
       this.drawnFeatures.push(this.drawnFeaturesStore[this.currentIndex-'0'-1]);
+      let c = this.drawnFeatures[0]
+      c = c["geometry"]
+      c = c["coordinates"]
+      this.center = c[0][0]
     },
     geometryTypeToCmpName(type) {
       return 'vl-geom-' + kebabCase(type)

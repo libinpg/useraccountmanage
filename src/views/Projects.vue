@@ -31,28 +31,28 @@
         <span>按完成时间排序</span>
       </v-tooltip> -->
       </v-layout>
-       <v-layout>
-        <v-flex xs12 md1>
+       <v-row>
+        <v-col cols = "1">
           <div class="caption grey--text">任务序号</div>
-        </v-flex>
-        <v-flex xs12 md2>
+        </v-col>
+        <v-col>
           <div class="caption grey--text">提取类型</div>
-        </v-flex>
-        <v-flex xs6 sm4 md2>
+        </v-col>
+        <v-col>
           <div class="caption grey--text">创建日期</div>
-        </v-flex>
-        <v-flex xs6 sm4 md2>
+        </v-col>
+        <v-col>
           <div class="caption grey--text">完成日期</div>
-        </v-flex>
-        <v-flex xs2 sm4 md2>
-          <div class="caption grey--text">订单状态</div>
-        </v-flex>
-       </v-layout>
+        </v-col>
+        <v-col>
+          <div class="caption grey--text">任务状态</div>
+        </v-col>
+       </v-row>
        <v-divider>
       </v-divider>
       <v-card flat class="mt-5" v-for="project in projects" :key="project.title"> 
-      <v-layout  row wrap :class="`pa-3 project ${project.status}`">
-        <v-flex xs12 md1>
+      <!-- <v-layout  row :class="`project ${project.status}`" align-content-space-between=1>
+        <v-flex xs12 md1 >
           <div>{{project.id}}</div>
         </v-flex>
         <v-flex xs12 md2>
@@ -68,15 +68,34 @@
           <div>{{project.status}}</div>
           <div :class="`$(project.status) white--text my-2 caption`">任务状态</div>
         </v-flex>
-      </v-layout>
+      </v-layout> -->
+      <v-row  :class="`project ${project.status}`">
+        <v-col cols = "1" class="projectcol">
+          <div>{{project.id}}</div>
+        </v-col>
+        <v-col class="projectcol">
+          <div>{{project.extractiontype}}</div>
+        </v-col>
+        <v-col class="projectcol">
+          <div>{{project.createtime}}</div>
+        </v-col>
+        <v-col class="projectcol">
+          <div>{{project.finishtime}}</div>
+        </v-col>
+        <v-col class="projectcol">
+          <div>{{project.status}}</div>
+          <div :class="`$(project.status) white--text my-2 caption`">任务状态</div>
+        </v-col>
+      </v-row>
       <v-divider>
       </v-divider>
       </v-card>
-       <div class="text-center">
+      <div class="text-center">
         <v-pagination
+          class="pagination"
           v-model="page"
           :length="6"
-        ></v-pagination>
+      ></v-pagination>
       </div>
   </div>
 </template>
@@ -93,6 +112,25 @@
 }
 .project.生成数据 {
   border-right:4px solid green;
+}
+
+.project.数据预处理 .projectcol{
+  height: 30px;
+}
+.project.模型训练 .projectcol{
+  height: 30px;
+}
+.project.模型测试 .projectcol{
+  height: 30px;
+}
+.project.生成数据 .projectcol{
+  height: 30px;
+}
+.text-center {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 </style>
 
