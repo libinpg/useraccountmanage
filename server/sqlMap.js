@@ -15,7 +15,10 @@ var sqlMap = {
       updatebasicinfo: 'UPDATE `userdata` SET `firstname`= ? ,`lastname`= ? ,`email`= ?  WHERE `username`= ?',
       searchidprogress: 'select * from progress where `id`= ?',
       searchprogress: 'select * from progress',
-      searchidfeature: 'select * from features where `id`= ?'
+      searchidfeature: 'select * from features where `id`= ?',
+      //需要添加加密
+      adduser: 'INSERT INTO `user` (`id`, `username`, `userpassword`, `useremail`, `userwechatid`) VALUES (NULL,?,?,NULL, NULL)',
+      authenticate: 'select * from user where `username`= ? and `userpassword`= ?'
     },
     other:{
         delete:'', // delete sql语句

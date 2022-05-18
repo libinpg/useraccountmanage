@@ -38,11 +38,11 @@
           </v-list-item>
         </v-list>
       </v-menu>
-      <v-btn class="mr-3" icon >
-            <v-avatar size="40">
+      <v-btn class="mr-3" link :to="loginlink.route">
+           <v-avatar size="40" >
               <img src="/account-circle-outline.png" alt="">
             </v-avatar>
-        </v-btn>
+      </v-btn>
       </v-toolbar>
       
       <v-main>
@@ -100,7 +100,8 @@
                 {icon : 'mdi-message-alert',text : '用户反馈', route: '/feedback'},
                 {icon : 'mdi-export',text : '数据导出', route: '/'},
                 {icon : 'mdi-ab-testing',text : '系统性能测试', route: '/'},
-                ]
+                ],
+                loginlink: {icon : 'mdi-account',text : '登录', route: '/login'},
             }
         },
         components: {Popups},

@@ -10,9 +10,21 @@ import updateusername from '../components/accountviews/UpdateUsername.vue'
 import updatewechat from '../components/accountviews/UpdateWechat.vue'
 import adddata from '../views/AddData.vue'
 import feedback from '../views/Feedback.vue'
+import login from '../views/Login.vue'
+import register from '../views/Register.vue'
 Vue.use(VueRouter)
 
 const routes = [
+  {
+    path: '/login',
+    name: 'login',
+    component: login
+  },
+  {
+    path: '/register',
+    name: 'register',
+    component: register
+  },
   {
     path: '/projects',
     name: 'projects',

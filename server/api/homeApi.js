@@ -196,5 +196,33 @@ router.post('/getidfeature', (req, res) => {
     }
   })
 })
+
+router.post('/adduser', (req, res) => {
+  var sql = $sql.home.adduser
+  var parms = req.body
+  console.log(parms)
+  conn.query(sql, [parms.username,parms.userpassword], function (err, result) {
+    if (err) {
+      console.log(err)
+    }
+    if (result) {
+      jsonWrite(res, result)
+    }
+  })
+})
+
+router.post('/authenticate', (req, res) => {
+  var sql = $sql.home.authenticate
+  var parms = req.body
+  console.log(parms)
+  conn.query(sql, [parms.username,parms.userpassword], function (err, result) {
+    if (err) {
+      res.send({status: 'failed'})
+    }
+    if (result) {
+      res.send({status: 'success'})
+    }
+  })
+})
 module.exports = router
 
