@@ -18,7 +18,8 @@ var sqlMap = {
       searchidfeature: 'select * from features where `id`= ?',
       //需要添加加密
       adduser: 'INSERT INTO `user` (`id`, `username`, `userpassword`, `useremail`, `userwechatid`) VALUES (NULL,?,?,NULL, NULL)',
-      authenticate: 'select * from user where `username`= ? and `userpassword`= ?'
+      authenticate: 'select * from user where `username`= ? and `userpassword`= ?',
+      inserttoken: 'INSERT INTO `token`(`token`) VALUES (?)'
     },
     other:{
         delete:'', // delete sql语句

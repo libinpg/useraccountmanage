@@ -16,6 +16,7 @@
 
 <script>
 	import easyLogin from '../components/easyUtil.loginUi.1.0.vue';
+    import store from '../store'
 
 	export default {
 		components: {
@@ -48,7 +49,13 @@
 				this.$http.post('/api/home/authenticate',"username="+t.user+"&"+"userpassword="+t.pwd).then((response) => {
 				  status = response.data.status;
 				  console.log(response.data);
-				  "success" == status ? alert("登录成功") : alert("登录失败")
+				  localStorage.userName = t.user;
+                  localStorage.token = response.data.token;
+				  console.log("login",localStorage)
+				  "success" == status ? alert("左侧功能区已激活,点击使用系统") : alert("登录失败")
+				  this.$router.push({path:'/'})
+				  location.reload();
+                  
                 });
 				// if (status == "success"){
 				//   alert("登录成功");	

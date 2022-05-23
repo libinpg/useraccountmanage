@@ -28,16 +28,26 @@ const routes = [
   {
     path: '/projects',
     name: 'projects',
+    meta : {
+      requireAuth: true, 
+    },
     component: projects
   },
   {
     path: '/adddata',
     name: 'adddata',
+    meta : {
+      requireAuth: true, 
+    },
     component: adddata
   },
   {
-    path: '/order',
+    path: '/',
     name: 'order',
+    // 下面这个meta是重点，这里面配置requireAuth 为true，就是说必须登录的才能访问
+    meta : {
+      requireAuth: true, 
+    },
     component: order
   },
   {
@@ -47,21 +57,33 @@ const routes = [
       {
         path: '/updateusername',
         name: 'updateusername',
+        meta : {
+          requireAuth: true, 
+        },
         component: updateusername
       },
       {
         path: '/updatewechat',
         name: 'updatewechat',
+        meta : {
+          requireAuth: true, 
+        },
         component: updatewechat
       },
       {
         path: '/',
         name: 'updateemail',
+        meta : {
+          requireAuth: true, 
+        },
         component: updateemail
       },
       {
         path: '/updatepassword',
         name: 'updatepassword',
+        meta : {
+          requireAuth: true, 
+        },
         component: updatepassword
       },
       {
@@ -73,15 +95,24 @@ const routes = [
   },
   {
     path: '/progresstrack',
+    meta : {
+      requireAuth: true, 
+    },
     component: processtrack
   },
   {
     path: '/feedback',
+    meta : {
+      requireAuth: true, 
+    },
     component: feedback,
   },
   {
     path: '/team',
     name: 'team',
+    meta : {
+      requireAuth: true, 
+    },
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.

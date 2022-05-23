@@ -43,6 +43,9 @@
               <img src="/account-circle-outline.png" alt="">
             </v-avatar>
       </v-btn>
+      <v-btn class="mr-3" @click = "logout">
+           注销
+      </v-btn>
       </v-toolbar>
       
       <v-main>
@@ -113,7 +116,13 @@
             else if (this.arrowicon == "mdi-menu-down") {
               this.arrowicon = "mdi-menu-right";
             }
-          }
+          },
+          logout() {
+            localStorage.clear();
+            console.log("clear",localStorage)
+            location.reload();
+            this.$router.push('/login')
+          },
         }
       }
   </script>

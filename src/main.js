@@ -19,6 +19,34 @@ Vue.config.productionTip = false;
 // Vue.use(VueLayers, {
 //   dataProjection: 'EPSG:4326',
 // })
+// 为什么传这三个参数，官网有详细介绍
+router.beforeEach((to,from,next) => {
+    // 这里的meta就是我们刚刚在路由里面配置的meta
+    if(to.meta.requireAuth){
+        // 下面这个判断是自行实现到底是否有没有登录
+        if (store.getters.isLogin){
+        // 登录就继续
+            next();
+        }else {
+        // 没有登录跳转到登录页面，登录成功之后再返回到之前请求的页面
+            next({
+                path : '/login',
+                query : {redirect : to.fullPath}
+            })
+        }
+    }else {
+    // 不需要登录的，可以继续访问
+        next()
+    }
+});
+axios.interceptors.request.use(function (config) {
+    if (localStorage.token) {
+        config.headers.Authorization = `token ${localStorage.token}`;
+    }
+    return config;
+}, function (err) {
+    return Promise.reject(err);
+});
 //cookie
 (function() {
 	var Cookie = {
